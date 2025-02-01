@@ -19,9 +19,9 @@ public class SimuladorLoteria {
 
             // USUARIO ESCOLHE NUMEROS
             for (int i = 0; i < numerosEscolhidos.length; i++) {
-                System.out.println("Digite o numero: "+(i + 1)+":");
+                System.out.println("Digite o numero: " + (i + 1) + ":");
                 numerosEscolhidos[i] = scanner.nextInt();
-                
+
             }
 
             //CRIAMOS O BILHETE COM OS NUMEROS ESCOLHIDOS
@@ -45,6 +45,8 @@ public class SimuladorLoteria {
         for (Bilhete bilhete : bilhetes) {
             bilhete.realizarSorteio();
             bilhete.exibirResultados();
+            System.out.println("Final do programa");
+
         }
         scanner.close();
     }
