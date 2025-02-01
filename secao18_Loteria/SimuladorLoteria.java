@@ -45,10 +45,6 @@ public class SimuladorLoteria {
         for (Bilhete bilhete : bilhetes) {
             bilhete.realizarSorteio();
             bilhete.exibirResultados();
-            System.out.println("Final do programa");
-            System.out.println("Final do programa2");
-            System.out.println("Final do programa3");
-
         }
         scanner.close();
     }
