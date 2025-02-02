@@ -33,11 +33,19 @@ public class SistemaCadastroAluno {
             Aluno aluno = new Aluno(nome, matricula, numeroDeNotas);
 
             //adicionar as notas
+            aluno.adicionarNotas(scanner);
+
             //armazenar o aluno no array
             alunos[i] = aluno;
         }
 
-        System.out.println("O aluno é " + alunos[0].getNome());
+        //exibir os resultados
+        System.out.println("O resultado dos alunos: ");
+
+        for (Aluno aluno : alunos) {
+            aluno.exibirResultado();
+            System.out.println();
+        }
 
         scanner.close();
 
