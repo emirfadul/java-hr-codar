@@ -1,0 +1,9 @@
+//Para subir alterações projeto
+$ git add .
+$ git commit -m "texto do commit"
+$ git push -u origin main
+
+
+//Para baixar na maquina o projeto
+$ git clone (endereço https)
+$ git pull
