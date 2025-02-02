@@ -25,6 +25,33 @@ public class POO {
 
         //a subclasse tem acesso a tudo da classe superclasse
         //e a superclasse NAO tem acesso a classe filha
+        // Classe Object
+        Pessoa mateus = new Pessoa("mateus", 33);
+        Pessoa pedro = new Pessoa("pedro", 25);
+
+        System.out.println(mateus.toString());
+        System.out.println(mateus.equals(pedro));
+        System.out.println(mateus.hashCode());
+
+        System.out.println("----- OVERRIDE-------");
+
+        //OVERRIDE
+        Quadrado q1 = new Quadrado(4);
+        Circulo c1 = new Circulo(3.2);
+
+        System.out.println(q1.calcularArea());
+        System.out.println(c1.calcularArea());
+
+        //super
+        Funcionario funcionario = new Funcionario("carlos", 3000);
+        Gerente gerente = new Gerente("pedro", 5000, 1000);
+
+        funcionario.exibirDetalhes();
+        gerente.exibirDetalhes();
+
+        System.out.println(funcionario.calcularBonus());
+        System.out.println(gerente.calcularBonus());
+
     }
 
 }
