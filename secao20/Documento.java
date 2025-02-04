@@ -3,7 +3,6 @@ package secao20;
 interface Imprimivel {
 
     void imprimir();
-
 }
 
 interface Salvavel {
