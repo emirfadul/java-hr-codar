@@ -52,6 +52,39 @@ public class POO {
         System.out.println(funcionario.calcularBonus());
         System.out.println(gerente.calcularBonus());
 
+        System.out.println("----- classe abstrata-------");
+        //classe abstrata
+
+        InstrumentoMusical violao = new Violao("violao");
+        InstrumentoMusical bateria = new Bateria("Bateria");
+
+        violao.exibirDetalhes();
+        bateria.exibirDetalhes();
+
+        violao.tocar();
+        bateria.tocar();
+
+        System.out.println("----- interfaces-------");
+        //interfaces
+
+        Pagamento cartao = new CartaoCredito();
+        Pagamento transf = new TransferenciaBancaria();
+
+        cartao.processarPagamento(100);
+        cartao.exibirRecibo(100);
+
+        transf.processarPagamento(500);
+        transf.exibirRecibo(500);
+
+        System.out.println("----Multiplas Interfaces-------");
+        //Multiplas Interfaces
+
+        Documento doc = new Documento("Arquivo de texto");
+
+        doc.salvar();
+        doc.imprimir();
+        doc.instrucaoParaSalvar();
+
     }
 
 }
