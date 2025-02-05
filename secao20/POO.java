@@ -85,6 +85,9 @@ public class POO {
         doc.imprimir();
         doc.instrucaoParaSalvar();
 
+        System.out.println("----Multiplas Interfaces-------");
+        //Default Methods nas Interfaces
+
     }
 
 }
