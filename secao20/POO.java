@@ -88,6 +88,11 @@ public class POO {
         System.out.println("----Multiplas Interfaces-------");
         //Default Methods nas Interfaces
 
+        CalculadoraAvancada calc = new CalculadoraAvancada();
+
+        System.out.println("Soma de 2 + 5 é: " + calc.somar(2, 4));
+        System.out.println("Multiplicação de 4 x 5 é: " + calc.multiplicar(4, 5));
+
     }
 
 }
