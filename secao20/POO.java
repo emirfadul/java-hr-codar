@@ -92,6 +92,7 @@ public class POO {
 
         System.out.println("Soma de 2 + 5 é: " + calc.somar(2, 4));
         System.out.println("Multiplicação de 4 x 5 é: " + calc.multiplicar(4, 5));
+        System.out.println("final.....");
 
     }
 
