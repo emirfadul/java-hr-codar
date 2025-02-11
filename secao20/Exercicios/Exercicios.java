@@ -18,6 +18,12 @@ public class Exercicios {
 
         carro.acelerar();
         moto.acelerar();
+
+        //exercicio 3
+        System.out.println("--- Exercicio 3 -------");
+        Cachorro cachorro = new Cachorro("Hulk", "latido", "Doberman");
+
+        cachorro.exibirDetalhes();
     }
     
 }
