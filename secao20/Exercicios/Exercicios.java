@@ -24,6 +24,20 @@ public class Exercicios {
         Cachorro cachorro = new Cachorro("Hulk", "latido", "Doberman");
 
         cachorro.exibirDetalhes();
+
+        //exercicio 4
+        System.out.println("--- Exercicio 4 -------");
+
+        FuncionarioTempoIntegral fti = new FuncionarioTempoIntegral("Ana", 4000);
+        FuncionarioMeioPeriodo fmp = new FuncionarioMeioPeriodo("Joao", 30, 180);
+
+        System.out.println("Salario Ana "+fti.calcularSalario());
+        System.out.println("Salario Joao "+fmp.calcularSalario());
+
+        fti.adicionarBeneficio("Plano de saude e Vale Alimentação");
+        fmp.adicionarBeneficio("Vale Alimentação");
     }
+
+
     
 }
