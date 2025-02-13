@@ -34,8 +34,7 @@ public class POO2 {
 
             Field campoNome = classePessoa.getDeclaredField("nome");
             
-            campoNome.setAccessible(true);
-            
+            campoNome.setAccessible(true);         
             
 
         } catch (Exception e) {
