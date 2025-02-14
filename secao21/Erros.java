@@ -1,7 +1,10 @@
 package secao21;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class Erros {
 
@@ -69,6 +72,25 @@ public class Erros {
         } catch (Exception e) {
             System.out.println("[Error]:"+e.getMessage());
         }    
+
+        //Exceções Customizadas 
+        System.out.println("---- Exceções Customizadas --------");
+
+        Banco minhaConta = new Banco(5000);
+
+        try {
+            minhaConta.sacar(6000);
+        } catch (Exception e) {
+            System.out.println("Erro: "+e.getMessage());
+        }
+
+        try {
+            processarArquivo("/var/www/arquivo.txt");
+        } catch (FileNotFoundException e) {
+            System.out.println("Erro: "+ e.getMessage());
+        }catch(IOException e){
+            System.out.println("Erro: "+ e.getMessage());
+        }
     }
 
     public static void validarIdade(int idade){
@@ -76,6 +98,19 @@ public class Erros {
             throw new IllegalArgumentException("idade deve ser maior que 18.");                
         }
         System.out.println("idade valida: "+idade);
+    }
+
+    public static void processarArquivo(String caminho) throws FileNotFoundException, IOException{
+        if (caminho == null || caminho.isEmpty()) {
+            throw new IOException("Caminho invalido.");            
+        }
+
+        File arquivo = new File(caminho);
+
+        if (!arquivo.exists()) {
+            throw new FileNotFoundException("Arquivo nao encontrado");            
+        }
+        System.out.println("Arquivo encontrado com sucesso.");
     }
     
 }
