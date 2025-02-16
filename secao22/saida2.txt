@@ -1,0 +1,3 @@
+escrevendo em arquivo com Buffered
+escrevendo em arquivo novamente com Buffered
+acrescentando uma linha ao texto existente.
