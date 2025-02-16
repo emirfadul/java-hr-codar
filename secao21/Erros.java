@@ -102,6 +102,32 @@ public class Erros {
             System.out.println("Mensagem:  "+e.getMessage());
             System.out.println("Causa original : "+e.getCause());
         }
+
+        //Multicatch
+        System.out.println("---- Multicatch ------");
+
+        try {            
+            processarArquivo("asd");
+
+        } catch (NullPointerException | IOException e) {
+            System.out.println("Erro multicatch: "+e.getMessage());
+        }
+
+        // Relançar Exceção
+        System.out.println("---- Relançar Exceção ------");
+
+        try {
+            
+            processarDados(null);
+
+        } catch (Exception e) {
+
+            System.out.println("Outra coisa.....");
+            System.out.println("[Msg]: "+e.getMessage());
+            System.out.println("PIlha de execução: "+e.getStackTrace());         
+
+        }
+
     }
 
     public static void validarIdade(int idade){
@@ -139,14 +165,21 @@ public class Erros {
 
             npe.initCause(e);
 
-            throw npe;
-
-            
+            throw npe;            
         }
     }
-
-
-
-
     
+    public static void processarDados(String dados) throws Exception{
+        try {
+            if(dados == null){
+                throw new NullPointerException("Os dados são nulos.");
+            }
+
+        } catch (Exception e) {
+            
+            System.out.println("Tratamento, criação de log, .....");
+
+            throw e;
+        }
+    }
 }
