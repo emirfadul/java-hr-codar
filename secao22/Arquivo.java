@@ -1,5 +1,7 @@
 package secao22;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -126,6 +128,48 @@ public class Arquivo {
         } catch (Exception e) {
             System.out.println("Erro ao Deserializar objeto: "+e.getMessage());
         }
+
+        //Manipulação de binarios
+        System.out.println("------- Manipulação de binarios ------");
+
+        try (
+            FileInputStream fis = new FileInputStream(currentDir+"imagem.jpg");
+            FileInputStream fos = new FileInputStream(currentDir+"copia_imagem.jpg");    
+        ) {           
+
+            int byteData;
+
+            while ((byteData = fis.read()) != -1){
+              //  fos.write(byteData);                 
+            }
+
+            System.out.println("Arquivo copiado com sucesso");
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao copiar arquivo: "+e.getMessage());
+        }
+
+
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(currentDir+"video.mkv"));
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(currentDir+"copia_video.mkv"));         
+        ) {
+
+            byte[] buffer = new byte[1024];
+            int bytesLidos;
+
+            while ((bytesLidos = bis.read(buffer)) != -1) {
+                bos.write(buffer,0,bytesLidos);                
+            }
+
+            System.out.println("Video copiado com sucesso.");
+
+        } catch (Exception e) {
+            System.out.println("Erro ao copiar arquivo: "+e.getMessage());
+        }
+
+
+        
+
 
 
 
