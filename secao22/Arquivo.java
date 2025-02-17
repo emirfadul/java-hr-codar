@@ -1,15 +1,26 @@
 package secao22;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.imageio.ImageIO;
 
 public class Arquivo {
 
@@ -166,6 +177,74 @@ public class Arquivo {
         } catch (Exception e) {
             System.out.println("Erro ao copiar arquivo: "+e.getMessage());
         }
+
+
+         //Manipulação de imagem
+         System.out.println("------- Manipulação de imagem ------");
+
+         try {
+            BufferedImage imagem = ImageIO.read(new File(currentDir+"imagem.jpg"));
+
+            if (imagem == null) {
+                System.out.println("A imagem não pode ser carregada");                
+            }
+
+            Graphics2D g2d = imagem.createGraphics();
+
+            g2d.setFont(new Font("Arial",Font.BOLD, 50));
+
+            FontMetrics fm = g2d.getFontMetrics();
+
+            String texto = "Texto no Centro";
+
+            //centralizar imagem
+            int larguraTexto = fm.stringWidth(texto);
+            int alturaTexto = fm.getHeight();
+
+            //posicionamento
+            int x = (imagem.getWidth() - larguraTexto) / 2;
+            int y = (imagem.getHeight() - alturaTexto) / 2 + fm.getAscent();
+
+            //desenhar retangulo ao fundo texto
+            g2d.setColor(Color.BLACK);
+            g2d.fillRect(x - 10, y - fm.getAscent(), larguraTexto + 20, alturaTexto);
+
+            //desenhar texto em cima do retangulo
+            g2d.setColor(Color.RED);
+            g2d.drawString(texto, x, y);
+
+            //liberaçao recursos
+            g2d.dispose();
+
+            //salvar imagem
+            File outputFile = new File(currentDir+"imagemtexto.jpg");
+
+            ImageIO.write(imagem, "png'", outputFile);
+
+            System.out.println("Gerou o texto na imagem com sucesso");
+
+         } catch (Exception e) {
+            System.out.println("Erro ao processar imagem: "+e.getMessage());
+         }
+
+         //Manipulação Arquivos 
+         System.out.println("------- Manipulação de Arquivos ------");
+
+         Path caminhoDiretorio = Paths.get(currentDir+"diretorioNovo");
+
+         try {
+
+            if (!Files.exists(caminhoDiretorio)) {
+                Files.createDirectories(caminhoDiretorio);
+                System.out.println("Diretorio criado com sucesso: "+caminhoDiretorio.toString());                
+            }else{
+                System.out.println("Diretorio ja existe.");
+            }
+            
+         } catch (Exception e) {
+            System.out.println("Erro ao criar diretorio: "+e.getMessage());
+         }
+
 
 
         
