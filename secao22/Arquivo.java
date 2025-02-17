@@ -2,8 +2,12 @@ package secao22;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class Arquivo {
 
@@ -87,6 +91,44 @@ public class Arquivo {
         } catch (Exception e) {
             System.out.println("Erro ao escrever arquivo: "+e.getMessage());
         }
+ 
+        //Serialização de Objetos
+        System.out.println("------- Serialização de Objetos ------");
+
+        Pessoa pessoa = new Pessoa("Emir", 53);
+
+        System.out.println("Nome: "+pessoa.getNome());
+        System.out.println("Idade: "+pessoa.getIdade());
+
+        //Serialização (output)
+        System.out.println("------- Serialização ------");
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(currentDir+"pessoa.ser"))) {
+            
+            oos.writeObject(pessoa);
+
+            System.out.println("Objeto serializado com sucesso!");
+             
+        } catch (Exception e) {
+            System.out.println("Erro ao serializar objeto: "+e.getMessage());
+        }
+
+        //Deserialização (input)
+        System.out.println("------- Deserialização ------");
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(currentDir+"pessoa.ser"))) {
+
+            Pessoa pessoa2 = (Pessoa) ois.readObject();
+
+            System.out.println("Nome: "+pessoa2.getNome());
+            System.out.println("Idade: "+pessoa2.getIdade());
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao Deserializar objeto: "+e.getMessage());
+        }
+
+
+
 
     }
     
