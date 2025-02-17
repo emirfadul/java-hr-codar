@@ -245,6 +245,46 @@ public class Arquivo {
             System.out.println("Erro ao criar diretorio: "+e.getMessage());
          }
 
+         //Manipulação Arquivos, criar, copiar e mover 
+         System.out.println("------- Manipulação de Arquivos criar copiar mover------");
+         
+         Path caminhhoArquivoOriginal = Paths.get(currentDir+"arquivo_criado.txt");
+         Path caminhhoArquivoCopia = Paths.get(currentDir+"arquivo_criado_copia.txt");
+         Path caminhhoArquivoMovido = Paths.get(currentDir+"diretorioNovo","arquivo_movido.txt");
+
+
+         try {
+            //criar
+            if (!Files.exists(caminhhoArquivoOriginal)) {
+                Files.createFile(caminhhoArquivoOriginal);   
+                System.out.println("Arquivo criado.");             
+            }
+            //copiar
+            if (!Files.exists(caminhhoArquivoCopia)) {
+                Files.copy(caminhhoArquivoOriginal, caminhhoArquivoCopia);                
+            }
+             //mover
+            Files.move(caminhhoArquivoCopia, caminhhoArquivoMovido);
+            
+         } catch (Exception e) {
+            System.out.println("Erro ao manipular arquivos: "+e.getMessage());
+         }
+
+         //Arquivos temporários 
+         System.out.println("------- Arquivos Temporários ------");
+
+         try {
+
+            Path arquivoTemporario = Files.createTempFile("meuTempFile", ".txt");
+            System.out.println("Arquivo criado em : "+arquivoTemporario.toAbsolutePath());
+
+            Files.writeString(arquivoTemporario, "Conteudo TEmporário")
+             
+         } catch (Exception e) {
+            System.out.println("Erro ao criar arquivo temporário: "+e.getMessage());
+         }
+
+
 
 
         
@@ -256,3 +296,4 @@ public class Arquivo {
     }
     
 }
+;
