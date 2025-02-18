@@ -363,8 +363,8 @@ public class Arquivo {
             System.out.println("Erro ao descompactar os arquivos: "+e.getMessage());
         }  
 
-        //Manipulação CSV
-        System.out.println("------- Manipulação CSV ------");
+        //Manipulação CSV leitura
+        System.out.println("------- Manipulação CSV escrita------");
 
         String arquivoCSV = currentDir + "dados.csv";
         String linha;
