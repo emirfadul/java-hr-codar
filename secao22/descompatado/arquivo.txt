@@ -1,0 +1,3 @@
+Ester é um arquivo que vai ser lido 
+pelo java
+feito por emir fadul

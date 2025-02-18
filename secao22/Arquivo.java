@@ -19,6 +19,9 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 import javax.imageio.ImageIO;
 
@@ -104,7 +107,7 @@ public class Arquivo {
         } catch (Exception e) {
             System.out.println("Erro ao escrever arquivo: "+e.getMessage());
         }
- 
+
         //Serialização de Objetos
         System.out.println("------- Serialização de Objetos ------");
 
@@ -121,7 +124,7 @@ public class Arquivo {
             oos.writeObject(pessoa);
 
             System.out.println("Objeto serializado com sucesso!");
-             
+            
         } catch (Exception e) {
             System.out.println("Erro ao serializar objeto: "+e.getMessage());
         }
@@ -151,7 +154,7 @@ public class Arquivo {
             int byteData;
 
             while ((byteData = fis.read()) != -1){
-              //  fos.write(byteData);                 
+            //  fos.write(byteData);                 
             }
 
             System.out.println("Arquivo copiado com sucesso");
@@ -179,11 +182,11 @@ public class Arquivo {
         }
 
 
-         //Manipulação de imagem
-         System.out.println("------- Manipulação de imagem ------");
+        //Manipulação de imagem
+        System.out.println("------- Manipulação de imagem ------");
 
-         try {
-            BufferedImage imagem = ImageIO.read(new File(currentDir+"imagem.jpg"));
+        try {
+        BufferedImage imagem = ImageIO.read(new File(currentDir+"imagem.jpg"));
 
             if (imagem == null) {
                 System.out.println("A imagem não pode ser carregada");                
@@ -223,16 +226,16 @@ public class Arquivo {
 
             System.out.println("Gerou o texto na imagem com sucesso");
 
-         } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Erro ao processar imagem: "+e.getMessage());
-         }
+        }
 
-         //Manipulação Arquivos 
-         System.out.println("------- Manipulação de Arquivos ------");
+        //Manipulação Arquivos 
+        System.out.println("------- Manipulação de Arquivos ------");
 
-         Path caminhoDiretorio = Paths.get(currentDir+"diretorioNovo");
+        Path caminhoDiretorio = Paths.get(currentDir+"diretorioNovo");
 
-         try {
+        try {
 
             if (!Files.exists(caminhoDiretorio)) {
                 Files.createDirectories(caminhoDiretorio);
@@ -240,21 +243,20 @@ public class Arquivo {
             }else{
                 System.out.println("Diretorio ja existe.");
             }
-            
-         } catch (Exception e) {
+        
+        } catch (Exception e) {
             System.out.println("Erro ao criar diretorio: "+e.getMessage());
-         }
+        }
 
-         //Manipulação Arquivos, criar, copiar e mover 
-         System.out.println("------- Manipulação de Arquivos criar copiar mover------");
-         
-         Path caminhhoArquivoOriginal = Paths.get(currentDir+"arquivo_criado.txt");
-         Path caminhhoArquivoCopia = Paths.get(currentDir+"arquivo_criado_copia.txt");
-         Path caminhhoArquivoMovido = Paths.get(currentDir+"diretorioNovo","arquivo_movido.txt");
+        //Manipulação Arquivos, criar, copiar e mover 
+        System.out.println("------- Manipulação de Arquivos criar copiar mover------");
+        
+        Path caminhhoArquivoOriginal = Paths.get(currentDir+"arquivo_criado.txt");
+        Path caminhhoArquivoCopia = Paths.get(currentDir+"arquivo_criado_copia.txt");
+        Path caminhhoArquivoMovido = Paths.get(currentDir+"diretorioNovo","arquivo_movido.txt");
 
-
-         try {
-            //criar
+        try {
+                //criar
             if (!Files.exists(caminhhoArquivoOriginal)) {
                 Files.createFile(caminhhoArquivoOriginal);   
                 System.out.println("Arquivo criado.");             
@@ -263,17 +265,17 @@ public class Arquivo {
             if (!Files.exists(caminhhoArquivoCopia)) {
                 Files.copy(caminhhoArquivoOriginal, caminhhoArquivoCopia);                
             }
-             //mover
+                //mover
             Files.move(caminhhoArquivoCopia, caminhhoArquivoMovido);
-            
-         } catch (Exception e) {
+        
+        } catch (Exception e) {
             System.out.println("Erro ao manipular arquivos: "+e.getMessage());
-         }
+        }
 
-         //Arquivos temporários 
-         System.out.println("------- Arquivos Temporários ------");
+        //Arquivos temporários 
+        System.out.println("------- Arquivos Temporários ------");
 
-         try {
+        try {
 
             Path arquivoTemporario = Files.createTempFile("meuTempFile", ".txt");
             System.out.println("Arquivo criado em : "+arquivoTemporario.toAbsolutePath());
@@ -285,23 +287,107 @@ public class Arquivo {
             System.out.println("Conteudo: "+conteudo);
 
             Files.deleteIfExists(arquivoTemporario);
-
-
-             
-         } catch (Exception e) {
+            
+        } catch (Exception e) {
             System.out.println("Erro ao criar arquivo temporário: "+e.getMessage());
-         }
+        }
 
+        //Arquivos Zip comprimir 
+        System.out.println("------- Arquivos Zip comprimir ------");
 
+        Path arquivoOriginal = Paths.get(currentDir+"arquivo.txt");
+        Path arquivoZip = Paths.get(currentDir+"arquivo_comprimido.zip");
+
+        try (
+            ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(arquivoZip.toFile()));
+            FileInputStream fis = new FileInputStream(arquivoOriginal.toFile());
+            ) {
+
+            //cria uma entrada zip para o arquivo
+            ZipEntry zipEntry = new ZipEntry(arquivoOriginal.getFileName().toString());
+
+            zos.putNextEntry(zipEntry);
+
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+
+            while ((bytesRead = fis.read(buffer)) != -1) {
+            zos.write(buffer, 0, bytesRead);               
+            }
+
+            zos.closeEntry();
+            System.out.println("Arquivo compactado com sucesso.");
+        
+        } catch (Exception e) {
+            System.out.println("Erro ao zipar os arquivos: "+e.getMessage());
+        }
+
+        //Arquivos Zip descomprimir 
+        System.out.println("------- Arquivos Zip descomprimir ------");
+
+        Path arquivoZipado = Paths.get(currentDir+"arquivo_comprimido.zip");
+        Path destino = Paths.get(currentDir+"descompatado");
+
+        try (
+            ZipInputStream zis = new ZipInputStream(new FileInputStream(arquivoZipado.toFile()))
+        ) {
+            ZipEntry zipEntry;
+
+            //criar diretorio
+            if (!Files.exists(destino)) {
+                Files.createDirectories(destino);
+            }
+
+            //iterar em cada arquivo zip
+            while ((zipEntry = zis.getNextEntry()) != null) {
+
+                Path caminhoDestino = destino.resolve(zipEntry.getName());
+
+                try (FileOutputStream fos = new FileOutputStream(caminhoDestino.toFile())) {
+                    
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+
+                    while ((bytesRead = zis.read(buffer)) != -1) {
+                        fos.write(buffer, 0, bytesRead);               
+                    }
+
+                System.out.println("Arquivo descompatado: "+caminhoDestino);
+
+                zis.closeEntry();
+                    
+                }               
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao descompactar os arquivos: "+e.getMessage());
+        }  
+
+        //Manipulação CSV
+        System.out.println("------- Manipulação CSV ------");
+
+        String arquivoCSV = currentDir + "dados.csv";
+        String linha;
+        String separador = ",";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivoCSV))) {
+
+            while ((linha = br.readLine()) != null) {
+
+                //dividir a string ou explodir a string em array
+                String[] dados = linha.split(separador);
+
+                System.out.println("Nome: "+dados[0]+", idade: "+dados[1]+", cidade: "+dados[2]);                
+            }            
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao ler CSV: "+e.getMessage());
+        }
 
 
         
-
-
-
-
+        
 
     }
     
 }
-;
