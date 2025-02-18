@@ -1,7 +1,11 @@
 package secao23;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Generics {
 
@@ -63,6 +67,48 @@ public class Generics {
         for (Number numero : numeros3) {
             System.out.println(numero);    
         }
+
+        //generics colletions
+        System.out.println("----- Generics Colletions-------");
+        List<Integer> listaInteiros = new ArrayList<>();
+
+        listaInteiros.add(10);
+        listaInteiros.add(20);
+        listaInteiros.add(30);
+        listaInteiros.add(40);
+
+        for (Number numero : listaInteiros) {
+            System.out.print(numero); 
+            System.out.print(", ");             
+        }
+        System.out.println();
+
+        Set<String> conjuntoDePalavras = new HashSet<>();
+
+        conjuntoDePalavras.add("emir");
+        conjuntoDePalavras.add("joao");
+        conjuntoDePalavras.add("carlos");
+        conjuntoDePalavras.add("maria");
+
+        for (String palavras : conjuntoDePalavras) {
+            System.out.print(palavras); 
+            System.out.print(", ");             
+        }
+        System.out.println();
+
+        Map<String, Integer> mapaDeIdade = new HashMap<>();
+
+        mapaDeIdade.put("emir", 53);
+        mapaDeIdade.put("joao", 25);
+        mapaDeIdade.put("carlos", 32);
+        mapaDeIdade.put("marcio", 41);
+
+        for(Map.Entry<String, Integer> entrada : mapaDeIdade.entrySet()){
+            System.out.println(entrada.getKey()+" tem "+entrada.getValue()+" anos.");
+        }
+
+
+
     }
 
     public static <T extends Comparable<T>> T obterMaior(T valor1, T valor2){
@@ -96,10 +142,5 @@ public class Generics {
             lista.add(i);            
         }
     }
-
-
-
-
-
 
 }
