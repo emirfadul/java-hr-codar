@@ -364,7 +364,7 @@ public class Arquivo {
         }  
 
         //Manipulação CSV leitura
-        System.out.println("------- Manipulação CSV escrita------");
+        System.out.println("------- Manipulação CSV leitura------");
 
         String arquivoCSV = currentDir + "dados.csv";
         String linha;
@@ -384,9 +384,24 @@ public class Arquivo {
             System.out.println("Erro ao ler CSV: "+e.getMessage());
         }
 
+        //Manipulação CSV escrita
+        System.out.println("------- Manipulação CSV escrita------");
 
+        String arquivoEscritaCSV = currentDir + "dadosEscrita.csv";
         
-        
+        try (FileWriter writer = new FileWriter(arquivoEscritaCSV)) {
+
+            //inserção de linha a linha, respeitando o separador e quebrando linha no final
+            writer.append("Nome, idade, cidade\n");
+            writer.append("emir, 53, Manaus\n");
+            writer.append("joao, 42, Autazes\n");
+            writer.append("carlos, 48, Iranduba\n");
+
+            System.out.println("Conteudo gravado no CSV com sucesso.");
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao escrever CSV: "+e.getMessage());
+        }
 
     }
     
