@@ -278,7 +278,15 @@ public class Arquivo {
             Path arquivoTemporario = Files.createTempFile("meuTempFile", ".txt");
             System.out.println("Arquivo criado em : "+arquivoTemporario.toAbsolutePath());
 
-            Files.writeString(arquivoTemporario, "Conteudo TEmporário")
+            Files.writeString(arquivoTemporario, "Texto Conteudo TEmporário");
+
+            String conteudo = Files.readString(arquivoTemporario);
+
+            System.out.println("Conteudo: "+conteudo);
+
+            Files.deleteIfExists(arquivoTemporario);
+
+
              
          } catch (Exception e) {
             System.out.println("Erro ao criar arquivo temporário: "+e.getMessage());
