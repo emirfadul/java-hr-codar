@@ -107,8 +107,14 @@ public class Generics {
             System.out.println(entrada.getKey()+" tem "+entrada.getValue()+" anos.");
         }
 
+        //restrição multiplas de tipos
+        System.out.println("----- Restrição Multiplas Tipos -------");
 
+        Pato pato = new Pato();
+        
+        CriaturaGenerica<Pato> criatuPato = new CriaturaGenerica<>(pato);
 
+        criatuPato.usarHabilidades();
     }
 
     public static <T extends Comparable<T>> T obterMaior(T valor1, T valor2){
