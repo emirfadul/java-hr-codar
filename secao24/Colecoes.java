@@ -1,12 +1,6 @@
 package secao24;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Colecoes {
 
@@ -98,8 +92,49 @@ public class Colecoes {
         nomes.add("viana");
         nomes.add("alan");
 
-
         System.out.println(nomes);
+
+        //Map
+        System.out.println("----- Map ------");
+
+        Map<String, Integer> idadeMap = new HashMap<>();
+
+        idadeMap.put("joao", 30);
+        idadeMap.put("marcos", 31);
+        idadeMap.put("camila", 19);
+        idadeMap.put("maria", 21);
+
+        System.out.println(idadeMap);
+
+        idadeMap.put("maria", 24);
+
+        System.out.println("Alterando a idade de maria para 24, com uso do PUT");
+        System.out.println(idadeMap);
+
+        System.out.println("Contem chave com nome joão: "+idadeMap.containsKey("joao"));
+        System.out.println("Contem valor 19: "+idadeMap.containsValue(19));
+
+        System.out.println("Imprimindo Array com toString(): "+idadeMap.toString());
+        System.out.println("Imprimindo Array com entrySet(): "+idadeMap.entrySet());
+        System.out.println("Imprimindo Array sem nada: "+idadeMap);
+
+        //LinkedHashMap
+        System.out.println("----- LinkedHashMap ------");
+
+        Map<String, String> capitalMap = new LinkedHashMap<>();
+
+        capitalMap.put("brasil", "brasilia");
+        capitalMap.put("argentina", "buenos aires");
+        capitalMap.put("colombia", "bogota");
+
+        System.out.println(capitalMap);
+
+
+
+
+        
+
+
 
 
 
