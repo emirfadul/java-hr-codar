@@ -127,29 +127,28 @@ public class Colecoes {
         capitalMap.put("argentina", "buenos aires");
         capitalMap.put("colombia", "bogota");
 
-        System.out.println(capitalMap);
+        System.out.println(capitalMap);      
+        System.out.println(capitalMap.entrySet()); 
+        System.out.println(capitalMap.containsKey("colombia"));
+
+         //TreeMap
+         
+         System.out.println("----- TreeMap ------");
+
+         Map<String, Double> produtoPrecoMap = new TreeMap<>();
+
+         produtoPrecoMap.put("maça" , 3.50);
+         produtoPrecoMap.put("pera", 8.50);
+         produtoPrecoMap.put("uva", 13.50);
+         produtoPrecoMap.put("mamao", 5.50);
+
+         System.out.println(produtoPrecoMap);
+         System.out.println(produtoPrecoMap.entrySet());
 
 
 
 
-        
 
-
-
-
-
-
-
-
-
-        
-        
-
-             
-
-
-
-        
     }
     
 }
