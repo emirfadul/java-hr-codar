@@ -175,6 +175,36 @@ public class Colecoes {
             System.out.println("Nome: "+listIteratorNomes.previous());            
         }
 
+        //Collections imultavel
+        System.out.println("----- collections imultavel ------");
+        
+        List<String> listaMutavel = new ArrayList<>();
+
+        listaMutavel.add("suzuki");
+        listaMutavel.add("honda");
+        listaMutavel.add("triumph");
+
+        List<String> listaImutavel = Collections.unmodifiableList(listaMutavel);
+
+        System.out.println(listaImutavel);
+
+        //listaImutavel.add("yamaha"); //não pode adicionar nem tirar elementos
+
+        //List of
+        List<String> listaImultavel2 = List.of("item1","item2","item3");
+        System.out.println(listaImultavel2);
+
+        Set<Integer> listaImultavelSet = Set.of(1,2,3,4,4);
+
+        System.out.println(listaImultavelSet);
+        listaImultavelSet.add(5);
+
+
+
+
+
+
+
 
 
 
