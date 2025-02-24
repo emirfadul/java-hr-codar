@@ -131,19 +131,51 @@ public class Colecoes {
         System.out.println(capitalMap.entrySet()); 
         System.out.println(capitalMap.containsKey("colombia"));
 
-         //TreeMap
-         
-         System.out.println("----- TreeMap ------");
+        //TreeMap         
+        System.out.println("----- TreeMap ------");
 
-         Map<String, Double> produtoPrecoMap = new TreeMap<>();
+        Map<String, Double> produtoPrecoMap = new TreeMap<>();
 
-         produtoPrecoMap.put("maça" , 3.50);
-         produtoPrecoMap.put("pera", 8.50);
-         produtoPrecoMap.put("uva", 13.50);
-         produtoPrecoMap.put("mamao", 5.50);
+        produtoPrecoMap.put("maça" , 3.50);
+        produtoPrecoMap.put("pera", 8.50);
+        produtoPrecoMap.put("uva", 13.50);
+        produtoPrecoMap.put("mamao", 5.50);
 
-         System.out.println(produtoPrecoMap);
-         System.out.println(produtoPrecoMap.entrySet());
+        System.out.println(produtoPrecoMap);
+        System.out.println(produtoPrecoMap.entrySet());        
+
+        //Iterando
+        System.out.println("----- Iterator ------");
+
+        for (String nome : nomes) {
+            System.out.println(nome);            
+        }
+
+        //Iterator
+        Iterator<String> nomesIterator = nomes.iterator();
+
+        //removento elemento
+        while (nomesIterator.hasNext() ) {
+            String nome = nomesIterator.next();
+
+            if (nome.equals("emir")) {
+            nomesIterator.remove();                
+            }            
+        }
+        System.out.println(nomes);
+
+        //ListIterator
+        ListIterator<String> listIteratorNomes = listaDeNomes.listIterator();
+        
+        while (listIteratorNomes.hasNext()) {
+            System.out.println("Nome: "+listIteratorNomes.next());            
+        }
+
+        while (listIteratorNomes.hasPrevious()) {
+            System.out.println("Nome: "+listIteratorNomes.previous());            
+        }
+
+
 
 
 
