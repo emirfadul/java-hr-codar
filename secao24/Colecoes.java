@@ -1,6 +1,8 @@
 package secao24;
 
 import java.util.*;
+import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class Colecoes {
 
@@ -194,13 +196,53 @@ public class Colecoes {
         List<String> listaImultavel2 = List.of("item1","item2","item3");
         System.out.println(listaImultavel2);
 
-        Set<Integer> listaImultavelSet = Set.of(1,2,3,4,4);
+        Set<Integer> listaImultavelSet = Set.of(7,2,3,4);
 
         System.out.println(listaImultavelSet);
-        listaImultavelSet.add(5);
+        //listaImultavelSet.add(5);
 
+        //filter
+        System.out.println("----- Filter ------");
+        
+        List<Integer> numerosFiltrados = numeros.stream().filter(numero -> numero > 3).collect(Collectors.toList());
 
+        System.out.println(numeros);
+        
+        System.out.println(numerosFiltrados);
 
+        //busca
+        System.out.println("----- Busca ------");
+
+        int numeroParaEncontrar = 4;
+
+        boolean encontrou = false;
+        
+        for (Integer numero : numeros) {
+            if (numero == numeroParaEncontrar) {
+                encontrou = true;                
+            }            
+        }
+        System.out.println("A lista é "+numeros);
+        System.out.println("Existe o numero "+numeroParaEncontrar+" ? "+encontrou);
+        System.out.println("");
+
+        //contains
+        String nomeBuscado = "viana";
+        boolean encontrou2 = nomes.contains(nomeBuscado);
+
+        System.out.println("A lista é "+nomes);
+        System.out.println("Existe o nome "+nomeBuscado+" ? "+encontrou2);
+
+        //FindAny
+
+        Optional<Integer> qualquerNumero = numeros.stream().findAny();
+        System.out.println(qualquerNumero);
+
+        Optional<Integer> primeiroNumero = numeros.stream().findFirst();
+        System.out.println(primeiroNumero);
+
+        Optional<Integer> primeiroPar = numeros.stream().filter(num -> num %2 == 0).findFirst();
+        System.out.println(primeiroPar);
 
 
 
