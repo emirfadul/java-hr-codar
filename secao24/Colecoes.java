@@ -254,6 +254,31 @@ public class Colecoes {
         System.out.println(nomes);
         System.out.println(nomesMaiusculas);
 
+        //MODIFICAÇÃO
+        numeros.add(50);
+        System.out.println(numeros);
+
+        //remove elementos
+        numeros.remove(Integer.valueOf(2));
+        System.out.println(numeros);
+
+        numeros.add(3);
+        System.out.println(numeros);
+
+        //alterar todos elementos
+        numeros.replaceAll(numero -> numero * 2);
+        System.out.println(numeros);
+
+        numeros.add(201);
+        numeros.add(300);
+        numeros.add(400);
+        System.out.println(numeros);
+
+        numeros.removeIf(numero -> numero > 200);
+        System.out.println(numeros);
+
+
+
 
 
 
