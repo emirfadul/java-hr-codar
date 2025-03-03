@@ -234,7 +234,6 @@ public class Colecoes {
         System.out.println("Existe o nome "+nomeBuscado+" ? "+encontrou2);
 
         //FindAny
-
         Optional<Integer> qualquerNumero = numeros.stream().findAny();
         System.out.println(qualquerNumero);
 
@@ -244,6 +243,16 @@ public class Colecoes {
         Optional<Integer> primeiroPar = numeros.stream().filter(num -> num %2 == 0).findFirst();
         System.out.println(primeiroPar);
 
+        //MAP modificam collectons
+        List<Integer> quadrados = numeros.stream().map(n -> n * n).collect(Collectors.toList());
+        
+        System.out.println("collections "+numeros);                                    
+        System.out.println("aproveitando a mesma collections ao quarado "+quadrados);
+
+        List<String> nomesMaiusculas = nomes.stream().map(String::toUpperCase).collect(Collectors.toList());
+
+        System.out.println(nomes);
+        System.out.println(nomesMaiusculas);
 
 
 
