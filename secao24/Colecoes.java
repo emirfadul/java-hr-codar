@@ -298,10 +298,49 @@ public class Colecoes {
         pessoas.add(new Pessoa("João", 67));
         pessoas.add(new Pessoa("Maria", 18));
         pessoas.add(new Pessoa("Rodrigo", 40));
+        pessoas.add(new Pessoa("Andre", 32));
+
 
         //ordenar nomes
         pessoas.sort(Comparator.comparing(Pessoa::getNome));
 
+        for(Pessoa pessoa : pessoas){
+            System.out.println(pessoa);
+        }
+
+        //ordenar nome e idade
+        System.out.println("================");
+        pessoas.sort(Comparator.comparing(Pessoa::getNome).thenComparing(Pessoa::getIdade));
+
+        for(Pessoa pessoa : pessoas){
+            System.out.println(pessoa);
+        }
+
+        //Uso avançado do Streams
+        //flatmap
+        System.out.println("===== Streams Avançado ===========");
+
+        List<List<String>> listaDeListas = Arrays.asList(
+            Arrays.asList("maça", "banana"),
+            Arrays.asList("mamao", "uva"),
+            Arrays.asList("maça", "banana")
+        );
+        
+        List<String> listaUnica = listaDeListas.stream()
+                                                .flatMap(List::stream)
+                                                .collect(Collectors.toList());
+        
+        System.out.println(listaUnica);
+
+        //pipeline
+
+        List<Integer> resultado = numeros.stream()
+                                         .filter(n -> n%2 == 0)
+                                         .map(n -> n * 5)
+                                         .sorted()
+                                         .collect(Collectors.toList());
+        System.out.println("Numeros "+numeros);
+        System.out.println("Resultado apos multiplicação por 5 "+resultado);
 
 
 
