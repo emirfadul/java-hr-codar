@@ -285,6 +285,20 @@ public class Colecoes {
 
         String frase = nomes.stream().reduce(nomeBuscado, (concatenador, nome) -> concatenador + " "+ nome);
         System.out.println(frase);
+
+        // COMPARATOR
+        List<Pessoa> pessoas = new ArrayList<>();
+
+        pessoas.add(new Pessoa("Pedro", 33));
+        pessoas.add(new Pessoa("Ana", 25));
+        pessoas.add(new Pessoa("João", 67));
+        pessoas.add(new Pessoa("Maria", 18));
+        pessoas.add(new Pessoa("Rodrigo", 40));
+
+        //ordenar nomes
+        pessoas.sort(Comparator.comparing(Pessoa::getNome));
+
+
          
 
 
