@@ -274,8 +274,18 @@ public class Colecoes {
         numeros.add(400);
         System.out.println(numeros);
 
+        //remoção em condicional         
         numeros.removeIf(numero -> numero > 200);
         System.out.println(numeros);
+
+
+        //REDUCE
+        int soma = numeros.stream().reduce(0, (acumulador, numero) -> acumulador + numero);
+        System.out.println("Soma de todos os numeros é: "+soma);
+
+        String frase = nomes.stream().reduce(nomeBuscado, (concatenador, nome) -> concatenador + " "+ nome);
+        System.out.println(frase);
+         
 
 
 
