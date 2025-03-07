@@ -255,6 +255,7 @@ public class Colecoes {
         System.out.println(nomesMaiusculas);
 
         //MODIFICAÇÃO
+        //adiciona elementos
         numeros.add(50);
         System.out.println(numeros);
 
@@ -272,6 +273,9 @@ public class Colecoes {
         numeros.add(201);
         numeros.add(300);
         numeros.add(400);
+        System.out.println(numeros);
+
+        numeros.removeIf(numero -> numero > 200);
         System.out.println(numeros);
 
         //remoção em condicional         
@@ -299,7 +303,6 @@ public class Colecoes {
         pessoas.sort(Comparator.comparing(Pessoa::getNome));
 
 
-         
 
 
 
