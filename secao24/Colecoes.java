@@ -342,12 +342,27 @@ public class Colecoes {
         System.out.println("Numeros "+numeros);
         System.out.println("Resultado apos multiplicação por 5 "+resultado);
 
+        // 13 - Collectors
+        List<Produto> produtos = Arrays.asList(
+            new Produto("Camisa", "Roupas"),
+            new Produto("TV", "Eletrônicos"),
+            new Produto("Rádio", "Eletrônicos"),
+            new Produto("Sofá", "Móveis"),
+            new Produto("Mesa", "Móveis")
+        );
 
+        // agrupar por categoria
+        Map<String, List<Produto>> produtosPorCategoria = produtos.stream()
+                                                                  .collect(Collectors.groupingBy(p -> p.categoria));
 
+        System.out.println(produtos);
+        System.out.println(produtosPorCategoria);
 
+        //Particionar
+        Map<Boolean, List<Produto>> eletronicosENaoEletronicos = produtos.stream()
+                                                                         .collect(Collectors.partitioningBy(p -> p.categoria.equals("Eletrônicos")));
 
-
-
+        System.out.println(eletronicosENaoEletronicos);                                                            
 
 
 
