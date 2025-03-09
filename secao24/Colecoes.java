@@ -362,7 +362,14 @@ public class Colecoes {
         Map<Boolean, List<Produto>> eletronicosENaoEletronicos = produtos.stream()
                                                                          .collect(Collectors.partitioningBy(p -> p.categoria.equals("Eletrônicos")));
 
-        System.out.println(eletronicosENaoEletronicos);                                                            
+        System.out.println(eletronicosENaoEletronicos);        
+        
+        //Contando quantos produtos existem
+        long totalProdutos = produtos.stream()
+                                     .collect(Collectors.counting());
+
+        System.out.println("O total de produtos é "+totalProdutos);
+
 
 
 
