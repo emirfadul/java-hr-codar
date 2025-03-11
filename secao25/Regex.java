@@ -204,6 +204,36 @@ public class Regex {
         }
 
 
+        //Expressoes avançadas
+        //lookahead positivo - sinaliza para tras      
+        System.out.println("---------------------");
+
+        String regexLookAhead = "\\d+(?=\\$)";
+        texto = "Preços: 100$ 200$ $300 $400";
+
+        pattern = Pattern.compile(regexLookAhead);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("LookAhead positivo");
+
+        while (matcher.find()) {            
+            System.out.println("Encontrado: "+matcher.group());            
+        }
+
+        //lookahead positivo - sinaliza para tras      
+        System.out.println("---------------------");
+
+        String regexLookBehind = "(?<=\\$)\\d+";
+        texto = "Preços: 100$ 200$ $300 $400";
+
+        pattern = Pattern.compile(regexLookBehind);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("LookBehind positivo");
+
+        while (matcher.find()) {            
+            System.out.println("Encontrado: "+matcher.group());            
+        }
 
 
 
