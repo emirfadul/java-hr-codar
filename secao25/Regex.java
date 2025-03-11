@@ -220,7 +220,7 @@ public class Regex {
             System.out.println("Encontrado: "+matcher.group());            
         }
 
-        //lookahead positivo - sinaliza para tras      
+        //lookBehind positivo - sinaliza para frente      
         System.out.println("---------------------");
 
         String regexLookBehind = "(?<=\\$)\\d+";
@@ -235,7 +235,20 @@ public class Regex {
             System.out.println("Encontrado: "+matcher.group());            
         }
 
+        //lookahead negativo - sem ponto final      
+        System.out.println("---------------------");
 
+        String regexLookBehindNegativo = "(?<!#)\\b\\w+\\b";
+        texto = "#java #javascript #php python";
+
+        pattern = Pattern.compile(regexLookBehindNegativo);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("LookBehind negativo");
+
+        while (matcher.find()) {            
+            System.out.println("Encontrado: "+matcher.group());            
+        }
 
 
 
