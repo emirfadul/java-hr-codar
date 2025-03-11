@@ -114,6 +114,33 @@ public class Regex {
             System.out.println("Encontrada: "+matcher.group());            
         }
 
+        //grupos e captura
+        System.out.println("---------------------");
+        regex = "(\\d{2})-(\\d{2})-(\\d{4})";
+        texto = "A data de hoje é 23-09-2024 e a data de ontem foi 22-09-2024";
+
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("Correspondencias de grupo");
+
+        while (matcher.find()) {
+            System.out.println("Dia: "+matcher.group(1));     
+            System.out.println("Mês: "+matcher.group(2));            
+            System.out.println("Ano: "+matcher.group(3));       
+            System.out.println("Todos os grupos: "+matcher.group(0));    
+        }
+
+        //backreference para substituição
+        //$1 grupo1, $2 grupo2, $3 grupo3
+        System.out.println("---------------------");
+        String textoSubstituido = texto.replaceAll("(\\d{2})-(\\d{2})-(\\d{4})" , "$1/$2/$3");   
+
+        System.out.println("Texto original: "+texto);
+
+        System.out.println("Texto substituido: "+textoSubstituido);
+        
+        
 
 
 
