@@ -137,9 +137,88 @@ public class Regex {
         String textoSubstituido = texto.replaceAll("(\\d{2})-(\\d{2})-(\\d{4})" , "$1/$2/$3");   
 
         System.out.println("Texto original: "+texto);
-
         System.out.println("Texto substituido: "+textoSubstituido);
-        
+
+        //Avançado Pattern e Matcher
+        System.out.println("---------------------");
+
+        regex = "\\d{3}";
+        texto = "123ABC456";
+
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("Correspondencias parciais lookingAt");
+
+        if (matcher.lookingAt()) {
+            System.out.println("Encontrado: "+matcher.group());
+        }
+
+        //Contando grupos com groupCount
+        System.out.println("---------------------");
+
+        regex = "(\\d{3})-(\\d{3})-(\\d{3})";
+        texto = "123-456-789";
+
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("Contando grupos: ");
+        if (matcher.matches()) {
+
+            System.out.println("total de grupos encontrados: "+matcher.groupCount());
+
+            for (int i = 0; i <= matcher.groupCount(); i++) {
+                System.out.println("Grupo "+i+" tem o valor de "+matcher.group(i));                
+            }
+        }
+
+        //Start/end obter a posição das correspondencias na string
+        System.out.println("---------------------");
+
+        regex = "\\d{3}";
+        texto = "O codigo é 123 e o segundo codigo é 456";
+
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("Posição das correspondencias");
+
+        while (matcher.find()) {
+            
+            System.out.println("Encontrado: "+matcher.group()+ ", começa em "+matcher.start()+" e termina em "+matcher.end());            
+        }
+
+        //quote para tratar caracteres literais
+        System.out.println("---------------------");
+
+        String literalRegex = Pattern.quote("1+1=2");
+        texto = "A equação correta é 1+1=2 e é o resultado do exercicio";
+
+        pattern = Pattern.compile(literalRegex);
+        matcher = pattern.matcher(texto);
+
+        System.out.println("Caracteres literais");
+        if (matcher.find()) {
+            System.out.println("Encontrado: "+matcher.group()+ ", começa em "+matcher.start()+" e termina em "+matcher.end());            
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
 
