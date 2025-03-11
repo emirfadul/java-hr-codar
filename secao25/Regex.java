@@ -250,29 +250,40 @@ public class Regex {
             System.out.println("Encontrado: "+matcher.group());            
         }
 
+        //Validação data e hora
+        String regexData = "^([0-2][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$";
+        String[] datas = {"12/09/2010", "30/30/2000", "29/01/1999"};
 
+        System.out.println("Validar data DD/MM/YYYY");
+        for(String data : datas) {
+            if(validarRegex(data, regexData)) {
+                System.out.println("Data válida: " + data);
+            } else {
+                System.out.println("Data Inválida: " + data);
+            }
+        }
 
+        //Validação de hora HH:MM:SS
+        String regexHorario = "^([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$";
+        String[] horarios = {"12:52:33","15:56:41","10:33:32"};
 
+        System.out.println("Validar horário HH:MM:SS");
+        for(String hora : horarios) {
+            if(validarRegex(hora, regexHorario)) {
+                System.out.println("hora válida: " + hora);
+            } else {
+                System.out.println("hora Inválida: " + hora);
+            }
+        }       
+    
 
+    }
 
+    public static boolean validarRegex(String texto, String regex) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(texto);
 
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
+        return matcher.matches();
     }
     
 }
