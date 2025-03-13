@@ -80,7 +80,20 @@ public class Anotacoes {
                     System.out.println("Erro: "+e.getMessage());
                 }              
                 
-            }            
+            }   
+            
+            //Annottation co mprocessaddor
+            Servico servico = new Servico();
+
+            try {
+
+                LogProcessor.processarLogs(servico);
+                
+            } catch (Exception e) {
+                System.out.println("Erro: "+e.getMessage());
+            }
+
+
         }
     }
 }    
