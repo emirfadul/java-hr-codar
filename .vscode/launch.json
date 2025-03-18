@@ -6,13 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BorderPaneExample",
+            "request": "launch",
+            "mainClass": "helloworldfx.BorderPaneExample",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "VBoxHBoxExample",
             "request": "launch",
             "mainClass": "helloworldfx.VBoxHBoxExample",
             "projectName": "java-hr-codar_8d5868c1",
             "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
-        },
-        },
+        },    
         {
             "type": "java",
             "name": "StageSceneExample",
