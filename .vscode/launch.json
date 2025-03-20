@@ -6,6 +6,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GridPaneExample",
+            "request": "launch",
+            "mainClass": "helloworldfx.GridPaneExample",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "BorderPaneExample",
             "request": "launch",
             "mainClass": "helloworldfx.BorderPaneExample",
@@ -19,7 +27,7 @@
             "mainClass": "helloworldfx.VBoxHBoxExample",
             "projectName": "java-hr-codar_8d5868c1",
             "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
-        },    
+        },
         {
             "type": "java",
             "name": "StageSceneExample",

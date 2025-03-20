@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Drive Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #202124;
+        }
+        .sidebar ul {
+            list-style: none;
+        }
+        .sidebar li {
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 5px;
+        }
+        .sidebar li:hover {
+            background: #e8f0fe;
+        }
+        .header {
+            position: fixed;
+            width: calc(100% - 250px);
+            height: 60px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            left: 250px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #202124;
+        }
+        .upload-btn {
+            background: #1a73e8;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .upload-btn:hover {
+            background: #135abc;
+        }
+        .content {
+            flex: 1;
+            padding: 80px 20px 20px 20px;
+            background-color: #f8f9fa;
+            overflow-y: auto;
+        }
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        .file {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .file:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Meu Drive</h2>
+        <ul>
+            <li>📁 Meus Arquivos</li>
+            <li>👥 Compartilhados</li>
+            <li>🕒 Recentes</li>
+            <li>⭐ Favoritos</li>
+            <li>🗑️ Lixeira</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="header">
+            Google Drive Clone
+            <input type="file" id="fileInput" style="display: none;" />
+            <button class="upload-btn" onclick="document.getElementById('fileInput').click();">📤 Upload</button>
+        </div>
+        <div class="file-grid" id="fileGrid"></div>
+    </div>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', async function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('file', file);
+                
+                try {
+                    const response = await fetch('http://localhost:3000/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        const fileGrid = document.getElementById('fileGrid');
+                        const newFile = document.createElement('div');
+                        newFile.classList.add('file');
+                        newFile.textContent = `📄 ${file.name}`;
+                        fileGrid.appendChild(newFile);
+                    } else {
+                        alert('Erro ao enviar arquivo');
+                    }
+                } catch (error) {
+                    console.error('Erro:', error);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

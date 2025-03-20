@@ -4,11 +4,12 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class BorderPaneExample extends Application{
+public class GridPaneExample extends Application{
     
      @Override
     public void start(Stage primaryStage) throws Exception{
@@ -21,17 +22,17 @@ public class BorderPaneExample extends Application{
         Button btn5 = new Button("Botao 5");
         Button btn6 = new Button("Botao 6");
 
-        //criar o borderPane
-        BorderPane borderPane = new BorderPane();
+         //grid pane
+         GridPane gridPane = new GridPane();
+         gridPane.add(btn1, 1, 1);    
+         gridPane.add(btn2, 2, 1);    
+         gridPane.add(btn3, 3, 1);    
 
-        borderPane.setTop(btn1);
-        borderPane.setBottom(btn2);
-        borderPane.setLeft(btn3);
-        borderPane.setRight(btn4);
-        borderPane.setCenter(btn5);
+         gridPane.setHgap(10);
+
         
         //criando cena com layout
-        Scene scene = new Scene(borderPane,300,300);
+        Scene scene = new Scene(gridPane,300,300);
         
         // configuração do stage
         primaryStage.setTitle("Exemplo stage e scene");
