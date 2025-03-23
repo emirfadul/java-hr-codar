@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class GridPaneExample extends Application{
     
-     @Override
+    @Override
     public void start(Stage primaryStage) throws Exception{
 
         //criar botao
@@ -24,18 +24,24 @@ public class GridPaneExample extends Application{
 
          //grid pane
          GridPane gridPane = new GridPane();
+
          gridPane.add(btn1, 1, 1);    
          gridPane.add(btn2, 2, 1);    
          gridPane.add(btn3, 3, 1);    
+         gridPane.add(btn4, 1, 2);
+         gridPane.add(btn5, 2, 2);
+         gridPane.add(btn6, 3, 2);
 
          gridPane.setHgap(10);
+         gridPane.setVgap(10);
+
 
         
         //criando cena com layout
         Scene scene = new Scene(gridPane,300,300);
         
         // configuração do stage
-        primaryStage.setTitle("Exemplo stage e scene");
+        primaryStage.setTitle("Exemplo GridPane");
         primaryStage.setScene(scene);
         primaryStage.show();        
     }
