@@ -19,10 +19,12 @@ public class ButtonLabelExample extends Application{
         Label label = new Label("Este é um label");
 
         Button button = new Button("clicar");
-
+   
+        button.setOnAction(event -> label.setText("Clicou no botao"));
+   
         VBox vbox = new VBox();
         vbox.getChildren().addAll(label,button);
-        button.setOnAction(event -> label.setText("Clicou no botao"));
+     
         
         //criando cena com layout
         Scene scene = new Scene(vbox,300,300);
