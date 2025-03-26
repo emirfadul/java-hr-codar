@@ -6,6 +6,54 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Alert",
+            "request": "launch",
+            "mainClass": "helloworldfx.Alert",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "MultipleWindows",
+            "request": "launch",
+            "mainClass": "helloworldfx.MultipleWindows",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "CSSStyling",
+            "request": "launch",
+            "mainClass": "helloworldfx.CSSStyling",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "KeyboardMouseEvents",
+            "request": "launch",
+            "mainClass": "helloworldfx.KeyboardMouseEvents",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "ButtonClick",
+            "request": "launch",
+            "mainClass": "helloworldfx.ButtonClick",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "ComboBoxListView",
+            "request": "launch",
+            "mainClass": "helloworldfx.ComboBoxListView",
+            "projectName": "java-hr-codar_8d5868c1",
+            "vmArgs": "--module-path /home/emir/Downloads/openjfx-21.0.6_linux-x64_bin-sdk/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "CheckboxRadioButton",
             "request": "launch",
             "mainClass": "helloworldfx.CheckboxRadioButton",
