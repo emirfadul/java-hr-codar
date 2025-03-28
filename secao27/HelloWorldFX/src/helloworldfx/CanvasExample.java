@@ -25,12 +25,11 @@ public class CanvasExample extends Application{
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
         //desenhar o canvas
-
-
-
+        drawShapes(gc);
+        
 
         VBox vbox = new VBox(10);
-        vbox.getChildren().addAll(rectangle,circle,ellipse);
+        vbox.getChildren().addAll(canvas);
 
         //config do stage
         Scene scene = new Scene(vbox,500,500);
@@ -41,7 +40,24 @@ public class CanvasExample extends Application{
         primaryStage.show();        
     } 
 
-    private void dra  
+    private void drawShapes(GraphicsContext gc)  {
+    
+        gc.setStroke(Color.BLUE);
+        gc.setLineWidth(2);
+
+        gc.strokeLine(50, 50, 350, 50);
+
+        gc.setFill(Color.LIGHTBLUE);
+        gc.fillRect(100, 100, 250, 150);
+
+        gc.setStroke(Color.RED);
+        gc.strokeOval(250, 250, 100, 100);
+
+
+
+
+
+    }
 
 
     public static void main(String[] args) {
