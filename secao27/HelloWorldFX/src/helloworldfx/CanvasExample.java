@@ -53,10 +53,6 @@ public class CanvasExample extends Application{
         gc.setStroke(Color.RED);
         gc.strokeOval(250, 250, 100, 100);
 
-
-
-
-
     }
 
 
