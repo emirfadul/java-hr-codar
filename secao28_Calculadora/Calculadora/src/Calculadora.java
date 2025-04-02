@@ -32,6 +32,41 @@ public class Calculadora extends Application{
         VBox.setVgrow(display, Priority.NEVER);
         root.getChildren().add(display);
 
+        //botoes
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(10));
+
+        String[] buttons = {
+            "7","8","9","/",
+            "4","5","6","*",
+            "1","2","3","-",
+            "C","0","=","+"
+        };
+        int row = 0;
+        int col = 0;
+
+        for (String text : buttons) {
+            Button button = new Button(text);
+            button.setMinSize(50, 50);
+
+            //evento
+            grid.add(button,col,row);  
+            col++;
+
+            if (col > 3) {
+                col = 0;
+                row++;                
+            }
+
+
+        }
+
+        root.getChildren().add(grid);
+
+
+
         //Configurar cena
         Scene scene = new Scene(root,300,400);
         scene.getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
