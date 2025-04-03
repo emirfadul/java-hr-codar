@@ -59,20 +59,15 @@ public class Calculadora extends Application{
                 col = 0;
                 row++;                
             }
-
-
         }
 
         root.getChildren().add(grid);
-
-
 
         //Configurar cena
         Scene scene = new Scene(root,300,400);
         scene.getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {
