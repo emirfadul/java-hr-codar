@@ -42,7 +42,7 @@ public class Calculadora extends Application{
             "7","8","9","/",
             "4","5","6","*",
             "1","2","3","-",
-            "C","0","=","+"
+            "0","C","=","+"
         };
         int row = 0;
         int col = 0;
@@ -52,6 +52,8 @@ public class Calculadora extends Application{
             button.setMinSize(50, 50);
 
             //evento
+            button.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> handleButtonPress(text));
+
             grid.add(button,col,row);  
             col++;
 
@@ -68,6 +70,56 @@ public class Calculadora extends Application{
         scene.getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    //logica calculadora
+    private void handleButtonPress(String value){
+
+        switch (value) {
+            case "C":
+                currentInput = "";
+                operator = "";
+                previousValue = 0;
+                display.setText("");
+                break;
+            case "=":
+                if (!currentInput.isEmpty() && !operator.isEmpty()) {
+                    double currentValue = Double.parseDouble(currentInput);
+                    double result = calculate(previousValue,currentValue,operator);
+                    display.setText(String.valueOf(result));
+                    currentInput = String.valueOf(result);
+                    operator = "";                    
+                }
+                break;
+            case "+": case "-": case "*": case "/":
+                if (!currentInput.isEmpty()) {
+                    operator = value;
+                    previousValue = Double.parseDouble(currentInput);
+                    currentInput = "";                    
+                }
+                break;        
+            default:
+                currentInput += value;
+                display.setText(currentInput);
+                break;
+        }
+    }
+
+    // calculo
+    private double calculate(double a, double b, String op){
+
+        switch (op) {
+            case "+":
+                return a + b;     
+            case "-":
+                return a - b;     
+            case "*":
+                return a * b;                
+            case "/":
+                return a / b;                
+            default:
+                return 0;
+        }
     }
 
     public static void main(String[] args) {
