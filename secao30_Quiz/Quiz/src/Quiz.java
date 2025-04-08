@@ -9,7 +9,7 @@ import javafx.scene.layout.*;
 import javafx.scene.input.*;
 
 
-public class Cronometro extends Application{
+public class Quiz extends Application{
 
     private Label timeLabel = new Label("00:00:00");
     private int secondsElapsed = 0;
