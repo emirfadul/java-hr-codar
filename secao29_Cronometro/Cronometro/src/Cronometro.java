@@ -6,7 +6,6 @@ import javafx.util.Duration;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.input.*;
 
 
 public class Cronometro extends Application{
